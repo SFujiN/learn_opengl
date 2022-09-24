@@ -1,6 +1,6 @@
 sauce
-*
-!*.cpp
-!*.h
-!*.o
-!*.md
+
+src/*
+!src/*.cpp
+!src/*.c
+!src/*.h

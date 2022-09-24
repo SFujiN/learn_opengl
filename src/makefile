@@ -1,8 +1,8 @@
 CXXFLAGS = -lglfw3 -lGL -lX11 -lXxf86vm -lXinerama -lXcursor -lpthread -lXrandr -lXi -ldl -lm
 CC = g++
-INC = -I/home/doland/dev/self_study/learn_opengl/include
+INC = -I ../include
 
-all : hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3
+all : hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle
 
 hello_window : hello_window.cpp glad.o
 	$(CC) hello_window.cpp glad.o $(CXXFLAGS) $(INC) -o hello_window
@@ -50,4 +50,4 @@ shader_s.o : shader_s.cpp
 	$(CC) $(INC) -c shader_s.cpp
 
 clean :
-	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3
+	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle

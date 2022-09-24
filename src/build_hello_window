@@ -1,0 +1,1 @@
+g++ hello_window.cpp glad.o -o hello_window -lglfw3 -lGL -lX11 -lXxf86vm -lXinerama -lXcursor -lpthread -lXrandr -lXi -ldl -lm -I /home/doland/dev/self_study/learn_opengl/include/

@@ -36,7 +36,7 @@ int main()
 		return -1;
 	}
 
-	Shader ourShader("../shaders/shader.vs", "../shaders/shader.fs");
+	Shader ourShader("../shaders/shader_ex1.vs", "../shaders/shader_ex1.fs");
 
 	float vertices[] = {
 		// positions		 // colors

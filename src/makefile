@@ -2,7 +2,7 @@ CXXFLAGS = -lglfw3 -lGL -lX11 -lXxf86vm -lXinerama -lXcursor -lpthread -lXrandr 
 CC = g++
 INC = -I ../include
 
-all : hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1
+all : hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1 coordinate_system_ex2
 
 hello_window : hello_window.cpp glad.o
 	$(CC) hello_window.cpp glad.o $(CXXFLAGS) $(INC) -o hello_window
@@ -79,6 +79,9 @@ coordinate_system_many_cubes: coordinate_system_many_cubes.cpp glad.o stb_image.
 coordinate_system_ex1: coordinate_system_ex1.cpp glad.o shader_s.o stb_image.o
 	$(CC) coordinate_system_ex1.cpp glad.o shader_s.o stb_image.o $(CXXFLAGS) $(INC) -o coordinate_system_ex1
 
+coordinate_system_ex2: coordinate_system_ex2.cpp glad.o shader_s.o stb_image.o
+	$(CC) coordinate_system_ex2.cpp glad.o shader_s.o stb_image.o $(CXXFLAGS) $(INC) -o coordinate_system_ex2
+
 glad.o : glad.c
 	$(CC) $(INC) -c glad.c
 
@@ -89,4 +92,4 @@ stb_image.o : stb_image.cpp
 	$(CC) $(INC) -c stb_image.cpp
 
 clean :
-	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1
+	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1 coordinate_system_ex2

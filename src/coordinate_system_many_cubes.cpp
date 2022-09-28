@@ -100,9 +100,8 @@ int main()
 		glm::vec3(-1.3f,  1.0f, -1.5f)  
 	};
 
-	unsigned int VBO, VAO, EBO;
+	unsigned int VBO, VAO;
 	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
 	glGenVertexArrays(1, &VAO);
 
 	glBindVertexArray(VAO);
@@ -123,10 +122,11 @@ int main()
 	// set the texture wrapping/filtering options (on the currently bound texture object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// load and generate the texture
 	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char *data = stbi_load("../textures/container.jpg", &width, &height, &nrChannels, 0);
 	if (data)
 	{
@@ -144,9 +144,8 @@ int main()
 	// set the texture wrapping/filtering options (on the currently bound texture object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	stbi_set_flip_vertically_on_load(true);
 	data = stbi_load("../textures/awesomeface.png", &width, &height, &nrChannels, 0);
 	if (data)
 	{
@@ -188,25 +187,22 @@ int main()
 		model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
 		unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));*/
-		// view matrix
+		// view & projection matrix
 		glm::mat4 view = glm::mat4(1.0f);
+		glm::mat4 projection = glm::mat4(1.0f);
 		// note that we're translating the scene in the reverse direction of where we want to move
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		// projection matrix
-		glm::mat4 projection = glm::mat4(1.0f);
 		projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-		unsigned int projectionLoc = glGetUniformLocation(ourShader.ID, "projection");
-		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+		ourShader.setMat4("projection", projection);
+		ourShader.setMat4("view", view);
 
-		// render container
+		// render boxes
 		glBindVertexArray(VAO);
 		for(unsigned int i = 0; i < 10; i++)
 		{
 			glm::mat4 model = glm::mat4(1.0f);
 			model = glm::translate(model, cubePositions[i]);
-			float angle = 50.0f * i; 
+			float angle = 20.0f * i + 20.0f; 
 			model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 			ourShader.setMat4("model", model);
 

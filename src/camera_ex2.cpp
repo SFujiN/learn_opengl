@@ -19,7 +19,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 
 // view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-glm::mat4 lookAt();
+glm::mat4 lookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 up);
 
 // camera stuff
 glm::vec3 cameraPos	= glm::vec3(0.0f, 0.0f, 3.0f);
@@ -219,7 +219,7 @@ int main()
 		// view & projection matrix
 		glm::mat4 view =glm::mat4(1.0f);
 //		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-		view = lookAt();
+		view = lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		const float radius = 10.0f;
 		float camX = sin(glfwGetTime()) * radius;
 		float camZ = cos(glfwGetTime()) * radius;
@@ -329,7 +329,20 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		fov = 45.0f;
 }
 
-glm::mat4 lookAt()
+glm::mat4 lookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 up)
 {
-	return glm::mat4(1.0f);
+	glm::vec3 z = glm::normalize(-cameraFront);
+	glm::vec3 x = glm::normalize(glm::cross(up, z));
+	glm::vec3 y = glm::cross(z, x);
+
+	glm::mat4 rotation = glm::mat4(glm::vec4(x.x, y.x, z.x, 0.0f),
+				       glm::vec4(x.y, y.y, z.y, 0.0f),
+				       glm::vec4(x.z, y.z, z.z, 0.0f),
+				       glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+	glm::mat4 translation = glm::mat4(1.0f);
+	translation[3][0] = -pos.x;
+	translation[3][1] = -pos.y;
+	translation[3][2] = -pos.z;
+
+	return rotation * translation;
 }

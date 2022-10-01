@@ -40,8 +40,8 @@ shader_ex2: shader_ex2.cpp glad.o shader_s.o
 shader_ex3: shader_ex3.cpp glad.o shader_s.o
 	$(CC) shader_ex3.cpp glad.o shader_s.o $(CXXFLAGS) $(INC) -o shader_ex3
 
-texture_brick_triangle: texture_brick_triangle.cpp glad.o shader_s.o
-	$(CC) texture_brick_triangle.cpp glad.o shader_s.o $(CXXFLAGS) $(INC) -o texture_brick_triangle
+texture_brick_triangle: texture_brick_triangle.cpp glad.o shader_s.o stb_image.o
+	$(CC) texture_brick_triangle.cpp glad.o shader_s.o stb_image.o $(CXXFLAGS) $(INC) -o texture_brick_triangle
 
 texture_wooden_container: texture_wooden_container.cpp glad.o shader_s.o stb_image.o
 	$(CC) texture_wooden_container.cpp glad.o shader_s.o stb_image.o $(CXXFLAGS) $(INC) -o texture_wooden_container

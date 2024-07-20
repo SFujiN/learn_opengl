@@ -337,7 +337,8 @@ glm::mat4 lookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 up)
 	glm::vec3 x = glm::normalize(glm::cross(up, z));
 	glm::vec3 y = glm::cross(z, x);
 
-  printf("%f, %f, %f\n", pos.x, pos.y, pos.z);
+  // for debugging purposes
+  // printf("%f, %f, %f\n", pos.x, pos.y, pos.z);
 
 	glm::mat4 rotation = glm::mat4(glm::vec4(x.x, y.x, z.x, 0.0f),
 				       glm::vec4(x.y, y.y, z.y, 0.0f),

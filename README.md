@@ -3,7 +3,9 @@ My run through of Learn OpenGL exercises, mainly to keep me motivated and docume
 
 ## Instructions
 
-TBA
+```
+Hi
+```
 
 ## Citations
 - Thee website for Learn OpenGL:  

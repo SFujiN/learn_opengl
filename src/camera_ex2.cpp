@@ -208,6 +208,7 @@ int main()
 		ourShader.use();
 
 		glm::mat4 projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    // glm::mat4 projection = glm::ortho(0.0f, (float)SCR_WIDTH, 0.0f, (float)SCR_HEIGHT, 0.1f, 100.0f);
 		ourShader.setMat4("projection", projection);
 
 		// create transformations
@@ -331,9 +332,12 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 glm::mat4 lookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 up)
 {
-	glm::vec3 z = glm::normalize(-cameraFront);
+//	glm::vec3 z = glm::normalize(-cameraFront);
+	glm::vec3 z = glm::normalize(pos - target);
 	glm::vec3 x = glm::normalize(glm::cross(up, z));
 	glm::vec3 y = glm::cross(z, x);
+
+  printf("%f, %f, %f\n", pos.x, pos.y, pos.z);
 
 	glm::mat4 rotation = glm::mat4(glm::vec4(x.x, y.x, z.x, 0.0f),
 				       glm::vec4(x.y, y.y, z.y, 0.0f),

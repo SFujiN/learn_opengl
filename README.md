@@ -16,7 +16,13 @@ https://learnopengl.com/
 - Helpful resource for setting up OpenGL in Linux  
 https://medium.com/geekculture/a-beginners-guide-to-setup-opengl-in-linux-debian-2bfe02ccd1e
 
+## Requirements
+-Ubuntu (or probably any linux distro)
+-Make
+-g++
+
 ## TODO
 - expand on the exercises as a whole
 - make write ups on how each one works for review
-- add pictures`
+- add pictures
+- see if this builds on windows

@@ -2,9 +2,11 @@
 My run through of Learn OpenGL exercises, mainly to keep me motivated and documentation.
 
 ## Instructions
-
+There are a bunch of interesting exercises, but the current most interesting one is camera_ex2, which just allows you to walk around a scene with boxes.
+Take a look at the `makefile` to make the other exercises if interested.
 ```
-Hi
+cd src
+make camera_ex2 && ./camera_ex2
 ```
 
 ## Citations

@@ -59,8 +59,8 @@ int main()
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	Shader ourShader("colors_scene.vs", "colors_scene.fs");
-  Shader lightCubeShader("colors_scene.vs", "light_cube.fs");
+	Shader ourShader("../shaders/colors_scene.vs", "../shaders/colors_scene.fs");
+  Shader lightCubeShader("../shaders/colors_scene.vs", "../shaders/light_cube.fs");
 
 	float vertices[] = {
     		-0.5f, -0.5f, -0.5f, 

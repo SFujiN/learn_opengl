@@ -97,6 +97,9 @@ camera_ex1: camera_ex1.cpp glad.o stb_image.o
 camera_ex2: camera_ex2.cpp glad.o stb_image.o
 	$(CC) camera_ex2.cpp glad.o stb_image.o $(CXXFLAGS) $(INC) -o camera_ex2
 
+colors_scene: colors_scene.cpp glad.o stb_image.o
+	$(CC) colors_scene.cpp glad.o stb_image.o $(CXXFLAGS) $(INC) -o colors_scene
+
 glad.o : glad.c
 	$(CC) $(INC) -c glad.c
 

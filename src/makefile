@@ -1,4 +1,4 @@
-CXXFLAGS = -lglfw3 -lGL -lX11 -lXxf86vm -lXinerama -lXcursor -lpthread -lXrandr -lXi -ldl -lm
+CXXFLAGS = -lglfw -lGL -lX11 -lXxf86vm -lXinerama -lXcursor -lpthread -lXrandr -lXi -ldl -lm
 CC = g++
 INC = -I ../include
 

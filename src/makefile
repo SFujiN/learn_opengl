@@ -104,7 +104,7 @@ basic_lighting: basic_lighting.cpp glad.o stb_image.o
 	$(CC) basic_lighting.cpp glad.o stb_image.o $(CXXFLAGS) $(INC) -o basic_lighting
 
 basic_lighting_ex1: basic_lighting_ex1.cpp glad.o stb_image.o
-	$(CC) basic_lighting_ex1 glad.o stb_image.o $(CXXFLAGS) $(INC) -o basic_lighting_ex1
+	$(CC) basic_lighting_ex1.cpp glad.o stb_image.o $(CXXFLAGS) $(INC) -o basic_lighting_ex1
 
 glad.o : glad.c
 	$(CC) $(INC) -c glad.c

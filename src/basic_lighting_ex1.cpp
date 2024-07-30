@@ -37,7 +37,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Basic Lighting", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Basic Lighting: Exercise 1", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -169,6 +169,8 @@ int main()
     lightCubeShader.setMat4("view", view);
     lightCubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
     model = glm::mat4(1.0f);
+    lightPos.x = 2.0f * cos(glfwGetTime());
+    lightPos.z = 2.0f * sin(glfwGetTime());
     model = glm::translate(model, lightPos);
     model = glm::scale(model, glm::vec3(0.2f));
     lightCubeShader.setMat4("model", model);

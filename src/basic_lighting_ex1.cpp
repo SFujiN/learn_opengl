@@ -171,6 +171,8 @@ int main()
     model = glm::mat4(1.0f);
     lightPos.x = 2.0f * cos(glfwGetTime());
     lightPos.z = 2.0f * sin(glfwGetTime());
+    lightPos.y = 2.0f * sin(glfwGetTime());
+
     model = glm::translate(model, lightPos);
     model = glm::scale(model, glm::vec3(0.2f));
     lightCubeShader.setMat4("model", model);

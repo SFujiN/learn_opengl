@@ -115,6 +115,9 @@ basic_lighting_ex3: basic_lighting_ex3.cpp glad.o stb_image.o
 materials: materials.cpp glad.o
 	$(CC) materials.cpp glad.o $(CXXFLAGS) $(INC) -o materials
 
+materials_ex1: materials_ex1.cpp glad.o
+	$(CC) materials_ex1.cpp glad.o $(CXXFLAGS) $(INC) -o materials_ex1
+
 glad.o : glad.c
 	$(CC) $(INC) -c glad.c
 
@@ -126,7 +129,7 @@ stb_image.o : stb_image.cpp
 
 .PHONY: clean
 clean :
-	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1 coordinate_system_ex2 coordinate_system_ex3 camera camera_walk_around camera_ex1 camera_ex2 colors_scene basic_lighting basic_lighting_ex1 basic_lighting_ex2 basic_lighting_ex3 materials
+	rm -f hello_window hello_triangle hello_triangle_ex1 hello_triangle_ex2 hello_triangle_ex3 shader_crimson shader_uniform shader_rotate shader_more_attr shader_ex1 shader_ex2 shader_ex3 texture_brick_triangle texture_wooden_container texture_ex1 texture_ex2 texture_ex3 texture_ex4 transformation transformation_ex1 transformation_ex2 coordinate_system coordinate_system_cube coordinate_system_many_cubes coordinate_system_ex1 coordinate_system_ex2 coordinate_system_ex3 camera camera_walk_around camera_ex1 camera_ex2 colors_scene basic_lighting basic_lighting_ex1 basic_lighting_ex2 basic_lighting_ex3 materials materials_ex1
 
 clean_objects :
 	rm -f glad.o shader.o stb_image.o

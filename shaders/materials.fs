@@ -2,9 +2,6 @@
 
 in vec3 FragPos;
 in vec3 Normal;
-out vec4 FragColor;
-
-uniform vec3 viewPos;
 
 struct Material {
   vec3 ambient;
@@ -13,7 +10,6 @@ struct Material {
   float shininess;
 };
 
-uniform Material material;
 
 struct Light {
   vec3 position;
@@ -23,8 +19,11 @@ struct Light {
   vec3 specular;
 };
 
+uniform vec3 viewPos;
+uniform Material material;
 uniform Light light;
 
+out vec4 FragColor;
 void main() {
   // ambient
   vec3 ambient = light.ambient * material.ambient;
